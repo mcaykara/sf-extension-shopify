@@ -50,6 +50,21 @@ const ShopifyRequest = function() {
         return "https://" + ShopifyAuth.getStoreName() + ".myshopify.com/admin/";
     };
     
+    this.limit = function(amount) {
+        this.addUriParam("limit", amount);
+        return this;
+    };
+        
+    this.fields = function(fields) {
+        this.addUriParam("fields", fields);
+        return this;
+    };
+
+    this.collectionID = function(id) {
+        this.addUriParam("collection_id", id);
+        return this;
+    };
+    
 };
 
 module.exports = ShopifyRequest;
