@@ -1,4 +1,4 @@
-const http   = require("nf-core/net/http");
+const http   = require("sf-core/net/http");
 const ShopifyAuth = require("./ShopifyAuth");
 
 const ShopifyRequest = function() {
