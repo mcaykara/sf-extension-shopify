@@ -1,5 +1,6 @@
-const http   = require("sf-core/net/http");
+const Http   = require("sf-core/net/http");
 const ShopifyAuth = require("./ShopifyAuth");
+const http = new Http();
 
 const ShopifyRequest = function() {
     
@@ -10,16 +11,19 @@ const ShopifyRequest = function() {
     this.exec = function(onSuccess) {
         http.request(
             {
-                user: ShopifyAuth.getAPIKey(),
-                password: ShopifyAuth.getPassword(),
+                headers: {
+                    "Authorization": "Basic " + btoa(ShopifyAuth.getAPIKey() + ":" + ShopifyAuth.getPassword())
+                },
                 method: _method,
                 url: this.generateURL(),
-            },
-            function(response) {
-                onSuccess(JSON.parse(response.body));
-            }, 
-            function(error) {
-                console.log("ShopifyRequest: "+ error);
+                onLoad: function(response) {
+                    console.log("onLoad");
+                    console.log("response: " + response.body);
+                    onSuccess(JSON.parse(response.body.toString()));
+                }, 
+                onError: function(error) {
+                    console.log("ShopifyRequest: "+ error.message);
+                }
             }
         );
     };
