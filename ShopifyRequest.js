@@ -1,6 +1,7 @@
 const Http   = require("sf-core/net/http");
 const ShopifyAuth = require("./ShopifyAuth");
 const http = new Http();
+require("./btoa.js");
 
 const ShopifyRequest = function() {
     
@@ -17,8 +18,6 @@ const ShopifyRequest = function() {
                 method: _method,
                 url: this.generateURL(),
                 onLoad: function(response) {
-                    console.log("onLoad");
-                    console.log("response: " + response.body);
                     onSuccess(JSON.parse(response.body.toString()));
                 }, 
                 onError: function(error) {
