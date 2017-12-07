@@ -1,6 +1,6 @@
 {
   "name": "sf-extension-shopify",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/smartface/sf-extension-shopify.git"
   },
-  "author": "Eray Tuncer",
+  "author": "Smartface",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/smartface/sf-extension-shopify/issues"
